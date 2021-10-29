@@ -1,0 +1,33 @@
+@page "/"
+@using TicTacToe.Components
+@inject NavigationManager NavigationManager
+
+
+<AuthorizeView>
+    <NotAuthorized>
+        <h1>Welcome to TicTacToe</h1>
+        <hr/>
+        <h2>Please login to play</h2>
+    </NotAuthorized>
+    <Authorized>
+        <h2>Tic Tac Toe game</h2>
+        <hr/>
+        <Board/>
+    </Authorized>
+</AuthorizeView>
+@code{
+
+    [CascadingParameter]
+    protected Task<AuthenticationState> AuthStat { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        var user = (await AuthStat).User;
+        if (!user.Identity.IsAuthenticated)
+        {
+            NavigationManager.NavigateTo($"/Login");
+        }
+    }
+
+}
