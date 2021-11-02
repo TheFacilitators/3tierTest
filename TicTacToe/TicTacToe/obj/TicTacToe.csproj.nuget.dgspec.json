@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jodyc\\RiderProjects\\TicTacToe\\TicTacToe\\TicTacToe.csproj": {}
+    "C:\\Users\\Bruger\\OneDrive\\GitHub\\3tierTest\\TicTacToe\\TicTacToe\\TicTacToe.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jodyc\\RiderProjects\\TicTacToe\\TicTacToe\\TicTacToe.csproj": {
+    "C:\\Users\\Bruger\\OneDrive\\GitHub\\3tierTest\\TicTacToe\\TicTacToe\\TicTacToe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jodyc\\RiderProjects\\TicTacToe\\TicTacToe\\TicTacToe.csproj",
+        "projectUniqueName": "C:\\Users\\Bruger\\OneDrive\\GitHub\\3tierTest\\TicTacToe\\TicTacToe\\TicTacToe.csproj",
         "projectName": "TicTacToe",
-        "projectPath": "C:\\Users\\jodyc\\RiderProjects\\TicTacToe\\TicTacToe\\TicTacToe.csproj",
-        "packagesPath": "C:\\Users\\jodyc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jodyc\\RiderProjects\\TicTacToe\\TicTacToe\\obj\\",
+        "projectPath": "C:\\Users\\Bruger\\OneDrive\\GitHub\\3tierTest\\TicTacToe\\TicTacToe\\TicTacToe.csproj",
+        "packagesPath": "C:\\Users\\Bruger\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bruger\\OneDrive\\GitHub\\3tierTest\\TicTacToe\\TicTacToe\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jodyc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Bruger\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"

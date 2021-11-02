@@ -1,0 +1,16 @@
+﻿@page "/MainMenu"
+
+@inject NavigationManager Nav
+
+<h3>Main menu</h3>
+
+<button @onclick=@Play><p>Play</p></button>
+
+
+@code 
+{
+    private void Play()
+    {
+        Nav.NavigateTo("/Game");
+    }
+}
