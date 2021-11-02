@@ -2,6 +2,7 @@ package mediator;
 
 import com.google.gson.Gson;
 import db.UserDAO;
+import model.User;
 
 public class RequestHandler
 {
@@ -25,6 +26,10 @@ public class RequestHandler
         break;
       case "findAll":
         response = json.toJson(dao.readAll());
+        break;
+      case "save":
+        User u = json.fromJson(dataRequest.getBody(), User.class);
+        response = json.toJson(dao.create(u.getUsername(),u.getPassword()));
         break;
     }
     return response;

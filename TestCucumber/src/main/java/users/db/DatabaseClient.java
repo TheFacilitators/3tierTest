@@ -51,9 +51,14 @@ public class DatabaseClient implements AutoCloseable, UserRepository {
     User result = json.fromJson(resultJson,User.class);
     return result;  }
 
-  @Override public User save(User u)
+  @Override public User save(User u) throws IOException, InterruptedException
   {
-    return new User("DwightGoodman", "blazor");
+    String uJson = json.toJson(u);
+
+    String response = sendRequest("save",uJson);
+    String resultJson = response;
+    User result = json.fromJson(resultJson,User.class);
+    return result;
   }
 
   @Override public void deleteById(String username)

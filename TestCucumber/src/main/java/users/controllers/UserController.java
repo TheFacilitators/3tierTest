@@ -47,12 +47,10 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
     }
     catch (IOException e)
     {
-      e.printStackTrace();
       throw new UserNotFoundException("username");
     }
     catch (InterruptedException e)
     {
-      e.printStackTrace();
       throw new UserNotFoundException("username");
     }
 
@@ -62,14 +60,23 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
   }
   // end::get-aggregate-root[]
 
-  @PostMapping("/users") ResponseEntity<?> newUser(@RequestBody User newUser)
+  @PostMapping("/users") User newUser(@RequestBody User newUser)
   {
-
-    EntityModel<User> entityModel = assembler.toModel(repository.save(newUser));
-
-    return ResponseEntity //
-        .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) //
-        .body(entityModel);
+    System.out.println(newUser);
+    User u= null;
+    try
+    {
+      u= repository.save(newUser);
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+    catch (InterruptedException e)
+    {
+      e.printStackTrace();
+    }
+    return u;
   }
 
   // Single item
@@ -127,7 +134,18 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
       @PathVariable String id)
   {
 
-    repository.deleteById(id);
+    try
+    {
+      repository.deleteById(id);
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+    catch (InterruptedException e)
+    {
+      e.printStackTrace();
+    }
 
     return ResponseEntity.noContent().build();
   }
