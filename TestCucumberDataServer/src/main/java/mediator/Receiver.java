@@ -36,7 +36,7 @@ public class Receiver {
           String message = new String(delivery.getBody(), "UTF-8");
           System.out.println("request==> "+message);
           response = handler.filterRequest(message);
-          System.out.println("response==> "+message);
+          System.out.println("response==> "+response);
 
 
         } catch (RuntimeException e) {
