@@ -1,7 +1,5 @@
-package mediator;
+package db;
 
-import db.DataMapper;
-import db.DatabaseHelper;
 import model.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;

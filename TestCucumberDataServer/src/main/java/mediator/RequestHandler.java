@@ -1,6 +1,7 @@
 package mediator;
 
 import com.google.gson.Gson;
+import db.UserDAO;
 
 public class RequestHandler
 {
