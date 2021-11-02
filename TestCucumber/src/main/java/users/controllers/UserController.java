@@ -38,10 +38,23 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
   // tag::get-aggregate-root[]
   @GetMapping("/users") public CollectionModel<EntityModel<User>> all()
   {
-    List<EntityModel<User>> users = repository.findAll().stream() //
-        .map(assembler::toModel) //
-        .collect(Collectors.toList());
-
+    List<EntityModel<User>> users = null;
+    try
+    {
+      users = repository.findAll().stream() //
+          .map(assembler::toModel) //
+          .collect(Collectors.toList());
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+      throw new UserNotFoundException("username");
+    }
+    catch (InterruptedException e)
+    {
+      e.printStackTrace();
+      throw new UserNotFoundException("username");
+    }
 
     return CollectionModel.of(users,
         linkTo(methodOn(UserController.class).all())

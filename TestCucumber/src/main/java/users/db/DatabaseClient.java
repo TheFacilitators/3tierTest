@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import users.model.User;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -34,9 +35,13 @@ public class DatabaseClient implements AutoCloseable, UserRepository {
   }
 
   @Bean
-  @Override public List<User> findAll()
+  @Override public List<User> findAll() throws IOException, InterruptedException
   {
-    return null;
+    String response = sendRequest("findAll", "");
+    String resultJson = response;
+    User[] resultArray = json.fromJson(resultJson,User[].class);
+    List<User> result = Arrays.asList(resultArray.clone());
+    return result;
   }
 
   @Override public User findById(String username) throws IOException, InterruptedException
