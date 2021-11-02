@@ -1,5 +1,6 @@
 package users.controllers;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,6 +10,7 @@ import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import users.db.DatabaseClient;
 import users.model.User;
 import users.model.UserModelAssembler;
 import users.model.InvalidPasswordException;
@@ -25,7 +27,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
   private final UserModelAssembler assembler;
 
-  UserController(UserRepository repository, UserModelAssembler assembler)
+  UserController(DatabaseClient repository, UserModelAssembler assembler)
   {
 
     this.repository = repository;
@@ -61,8 +63,20 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
   @GetMapping("/users/{username}") @ResponseStatus(HttpStatus.OK) public EntityModel<User> one(
       @PathVariable String username, @RequestParam(value = "password", required = false) String password)
   {
-    User user = repository.findById(username) //
-        .orElseThrow(() -> new UserNotFoundException(username));
+    User user = null;
+    try
+    {
+      user = repository.findById(username);
+    }
+    catch (IOException e)
+    {
+      throw new UserNotFoundException(username);
+    }
+    catch (InterruptedException e)
+    {
+      e.printStackTrace();
+      throw new UserNotFoundException(username);
+    }
 
     if(password!=null&&!user.getPassword().equals(password))
     {
@@ -76,7 +90,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
   @PutMapping("/users/{id}") ResponseEntity<?> replaceUser(
       @RequestBody User newUser, @PathVariable String id)
   {
-
+/*
     User updatedUser = repository.findById(id) //
         .map(user -> {
           user.setUsername(newUser.getUsername());
@@ -92,7 +106,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
     return ResponseEntity //
         .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()) //
-        .body(entityModel);
+        .body(entityModel);*/
+    return null;
   }
 
   @DeleteMapping("/users/{id}") ResponseEntity<?> deleteUser(

@@ -1,9 +1,13 @@
 package users.db;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import users.model.User;
+import java.io.IOException;
+import java.util.List;
 
-public interface UserRepository extends JpaRepository<User, String>
+public interface UserRepository
 {
-
+  List<User> findAll();
+  User findById(String username) throws IOException, InterruptedException;
+  User save(User u);
+  void deleteById(String username);
 }
