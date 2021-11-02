@@ -41,31 +41,8 @@ public class DatabaseClient implements AutoCloseable, UserRepository {
 
   @Override public User findById(String username) throws IOException, InterruptedException
   {
-    final String corrId = UUID.randomUUID().toString();
-
-    String replyQueueName = channel.queueDeclare().getQueue();
-    AMQP.BasicProperties props = new AMQP.BasicProperties
-        .Builder()
-        .correlationId(corrId)
-        .replyTo(replyQueueName)
-        .build();
-
-    DataRequest request = new DataRequest("findById",username);
-    String requestJson = json.toJson(request);
-
-    channel.basicPublish("", requestQueueName, props, requestJson.getBytes("UTF-8"));
-
-    final BlockingQueue<String> response = new ArrayBlockingQueue<>(1);
-
-    String ctag = channel.basicConsume(replyQueueName, true, (consumerTag, delivery) -> {
-      if (delivery.getProperties().getCorrelationId().equals(corrId)) {
-        response.offer(new String(delivery.getBody(), "UTF-8"));
-      }
-    }, consumerTag -> {
-    });
-
-    String resultJson = response.take();
-    channel.basicCancel(ctag);
+    String response = sendRequest("findById",username);
+    String resultJson = response;
     User result = json.fromJson(resultJson,User.class);
     return result;  }
 
@@ -81,5 +58,35 @@ public class DatabaseClient implements AutoCloseable, UserRepository {
 
   public void close() throws IOException {
     connection.close();
+  }
+
+  private String sendRequest(String type, String message)
+      throws IOException, InterruptedException
+  {
+    final String corrId = UUID.randomUUID().toString();
+
+    String replyQueueName = channel.queueDeclare().getQueue();
+    AMQP.BasicProperties props = new AMQP.BasicProperties
+        .Builder()
+        .correlationId(corrId)
+        .replyTo(replyQueueName)
+        .build();
+
+    DataRequest request = new DataRequest(type, message);
+    String requestJson = json.toJson(request);
+
+    channel.basicPublish("", requestQueueName, props, requestJson.getBytes("UTF-8"));
+
+    final BlockingQueue<String> response = new ArrayBlockingQueue<>(1);
+
+    String ctag = channel.basicConsume(replyQueueName, true, (consumerTag, delivery) -> {
+      if (delivery.getProperties().getCorrelationId().equals(corrId)) {
+        response.offer(new String(delivery.getBody(), "UTF-8"));
+      }
+    }, consumerTag -> {
+    });
+     String resp = response.take();
+    channel.basicCancel(ctag);
+    return resp;
   }
 }
