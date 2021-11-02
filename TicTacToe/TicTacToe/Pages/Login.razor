@@ -1,18 +1,22 @@
 ﻿@page "/login"
 @using TicTacToe.Authorization
+@using TicTacToe.Data
+@using TicTacToe.Models
 @namespace LoginComponent
 
 @inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IUserService IUserService
 @inject NavigationManager NavigationManager
 <AuthorizeView>
     <NotAuthorized>
         <div class="form-group">
-            <label>User name:</label> <input type="text" placeholder="user name" @bind-value="username"/>
+            <label>User name:</label> <input type="text" placeholder="username" @bind-value="username"/>
         </div>
         <div class="form-group">
-            <label>Password</label> <input type="password" placeholder="Password" @bind-value="password"/>
+            <label>Password</label> <input type="password" placeholder="password" @bind-value="password"/>
         </div>
         <div style="color:red">@errorMessage</div> <a href="" @onclick="PerformLogin"> Login </a>
+        <div style="color:red">@errorMessage</div> <a href="" @onclick="CreateAccount"> Create Account </a>
     </NotAuthorized>
     <Authorized>
         <a href="" @onclick="PerformLogout"> Log out </a>
@@ -23,6 +27,7 @@
     private string username;
     private string password;
     private string errorMessage;
+    private User newUser;
 
     public async Task PerformLogin()
     {
@@ -52,10 +57,29 @@
         try
         {
             await ((Authenticator) AuthenticationStateProvider).Logout();
-            NavigationManager.NavigateTo("/");
+            //NavigationManager.NavigateTo("/");
         }
         catch (Exception e)
         {
+        }
+    }
+    public async Task CreateAccount()
+    {
+        errorMessage = "";
+        try
+        {
+            newUser = new User{
+                Username = username,
+                Password = password};
+            
+            await ((UserWebService) IUserService).CreateAccount(newUser);
+            username = "";
+            password = "";
+            errorMessage = "Please Login with your new credentials";
+        }
+        catch (Exception e)
+        {
+            NavigationManager.NavigateTo("/");
         }
     }
 
