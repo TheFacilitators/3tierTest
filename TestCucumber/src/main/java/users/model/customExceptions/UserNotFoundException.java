@@ -1,4 +1,4 @@
-package users.model;
+package users.model.customExceptions;
 
 public class UserNotFoundException extends RuntimeException
 {

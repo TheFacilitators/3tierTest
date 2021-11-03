@@ -15,11 +15,11 @@
         <div class="form-group">
             <label>Password</label> <input type="password" placeholder="password" @bind-value="password"/>
         </div>
-        <div style="color:red">@errorMessage</div> <a href="" @onclick="PerformLogin"> Login </a>
-        <div style="color:red">@errorMessage</div> <a href="" @onclick="CreateAccount"> Create Account </a>
+        <div style="color:red">@errorMessage</div> <a href="" @onclick="PerformLoginAsync"> Login </a>
+        <div style="color:red">@errorMessage</div> <a href="" @onclick="CreateAccountAsync"> Create Account </a>
     </NotAuthorized>
     <Authorized>
-        <a href="" @onclick="PerformLogout"> Log out </a>
+        <a href="" @onclick="PerformLogoutAsync"> Log out </a>
     </Authorized>
 </AuthorizeView>
 
@@ -29,7 +29,7 @@
     private string errorMessage;
     private User newUser;
 
-    public async Task PerformLogin()
+    public async Task PerformLoginAsync()
     {
         errorMessage = "";
         try
@@ -49,7 +49,7 @@
         }
     }
 
-    public async Task PerformLogout()
+    public async Task PerformLogoutAsync()
     {
         errorMessage = "";
         username = "";
@@ -63,7 +63,7 @@
         {
         }
     }
-    public async Task CreateAccount()
+    public async Task CreateAccountAsync()
     {
         errorMessage = "";
         try

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import users.db.DatabaseClient;
 import users.model.User;
 import users.model.UserModelAssembler;
-import users.model.InvalidPasswordException;
-import users.model.UserNotFoundException;
+import users.model.customExceptions.InvalidPasswordException;
+import users.model.customExceptions.UserNotFoundException;
 import users.db.UserRepository;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;

@@ -1,4 +1,4 @@
-package users.model;
+package users.model.customExceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 {
   @ResponseBody @ExceptionHandler(InvalidPasswordException.class)
   @ResponseStatus(HttpStatus.UNAUTHORIZED)
-  String invalidPasswordHandler(
-      InvalidPasswordException ex)
+  String invalidPasswordHandler(InvalidPasswordException ex)
   {
     return ex.getMessage();
   }
