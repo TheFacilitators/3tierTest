@@ -52,7 +52,7 @@ namespace TicTacToe.Data
             Console.WriteLine(content.ToString());
             
             HttpResponseMessage responseMessage = await client.PostAsync("http://localhost:8080/users", content);
-            
+            //log time herE? close to c#
             if (!responseMessage.IsSuccessStatusCode)
             {
                 throw new Exception($"Error, {responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
