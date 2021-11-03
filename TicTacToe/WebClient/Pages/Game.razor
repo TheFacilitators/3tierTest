@@ -1,0 +1,54 @@
+﻿@page "/Game/{avatarId:int}"
+@using WebClient.Models
+
+@inject 
+<h3>Game</h3>
+
+<p>Health points: @avatar.GetStatus()</p>
+
+<p>@msg</p>
+
+<div class="form-group">
+    <button @onclick="@Sleep">Sleep</button>
+    <button @onclick="@Work">Work</button>
+</div>
+
+
+
+@code 
+{
+    [Parameter]
+    private int avatarId { get; set; }
+    private Avatar avatar;
+    private string msg;
+
+    protected async override Task OnInitializedAsync()
+    {
+        avatarId = 1;
+        avatar = await Data.GetAvatarAsync(avatarId);
+    }
+
+    private void Sleep()
+    {
+        try
+        {
+            avatar.health.Increment(20);
+        }
+        catch (Exception e)
+        {
+            msg = e.Message;
+        }
+    }
+
+    private void Work()
+    {
+        try
+        {
+            avatar.health.Decrement(50);
+        }
+        catch (Exception e)
+        {
+            msg = e.Message;
+        }
+    }
+}
