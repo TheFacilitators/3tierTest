@@ -4,7 +4,47 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c2ddbac-3203-46bb-a971-b3686123608d" name="Changes" comment="" />
+    <list default="true" id="ab164499-162c-4192-b1f9-6e6ad5b30aa8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.3tierTest.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3tierTest.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebClient/Authentication/Authenticator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/WebClient/Authentication/Authenticator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebClient/Authentication/ILogin.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebClient/Authentication/LoginImp.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebClient/Data/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/WebClient/Data/IUserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebClient/Data/UserWebService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/WebClient/Data/UserWebService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebClient/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/WebClient/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebClient/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/WebClient/Pages/Index.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebClient/Pages/Login.razor" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/WebClient/Pages/Login.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebClient/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/WebClient/Shared/NavMenu.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebClient/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/WebClient/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/Controllers/WeatherForecastController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/Properties/launchSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/Startup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/WeatherForecast.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/WebServer.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/Debug/net5.0/.NETCoreApp,Version=v5.0.AssemblyAttributes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/Debug/net5.0/WebClient.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/Debug/net5.0/WebClient.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/Debug/net5.0/WebClient.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/Debug/net5.0/WebClient.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/Debug/net5.0/WebClient.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/Debug/net5.0/WebServer.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/Debug/net5.0/WebServer.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/Debug/net5.0/WebServer.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/Debug/net5.0/WebServer.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/WebClient.csproj.nuget.dgspec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/WebClient.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/WebClient.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/WebServer.csproj.nuget.dgspec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/WebServer.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/WebServer.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/project.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/project.packagespec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/WebServer/obj/rider.project.restore.info" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,12 +54,25 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/TicTacToe/WebClient/Data/IUserService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/WebClient/Data/UserWebService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/WebClient/Shared/NavMenu.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/WebClient/Pages/Game.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/WebClient/Pages/Index.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/WebClient/Pages/Login.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/WebClient/Pages/MainMenu.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/WebClient/Models/User.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/TicTacToe/Startup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/TicTacToe/Authorization/Authenticator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/TicTacToe/Helpers/Helper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/WebClient/Startup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TicTacToe/TicTacToe/Shared/NavMenu.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TicTacToe/TicTacToe/Shared/MainLayout.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TicTacToe/TicTacToe/Models/User.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TicTacToe/TicTacToe/Pages/Index.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TicTacToe/TicTacToe/Pages/Login.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/TicTacToe/TicTacToe/Authorization/Authenticator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/WebClient/Authentication/Authenticator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TicTacToe/TicTacToe/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TicTacToe/TicTacToe/Data/IUserService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TicTacToe/TicTacToe/Data/UserWebService.cs" root0="SKIP_HIGHLIGHTING" />
   </component>

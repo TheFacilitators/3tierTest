@@ -1,25 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.JSInterop;
-using WebClient.Models;
-
-namespace WebClient.Authentication
+﻿namespace DefaultNamespace
 {
-    public class Authenticator : AuthenticationStateProvider
+    public class Authenticator
     {
         private readonly IJSRuntime jsRuntime;
-        private readonly ILogin login;
-
+        private readonly IUserService userService;
         private User cachedUser;
 
-        public Authenticator(IJSRuntime jsRuntime, ILogin login)
+        public Authenticator(IJSRuntime jsRuntime, IUserService userService)
         {
             this.jsRuntime = jsRuntime;
-            this.login = login;
+            this.userService = userService;
         }
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
@@ -30,8 +20,8 @@ namespace WebClient.Authentication
                 string userAsJson = await jsRuntime.InvokeAsync<string>("sessionStorage.getItem", "currentUser");
                 if (!string.IsNullOrEmpty(userAsJson))
                 {
-                    User tmp = JsonSerializer.Deserialize<User>(userAsJson);
-                    ValidateLogin(tmp.Username, tmp.Password);
+                    cachedUser = JsonSerializer.Deserialize<User>(userAsJson);
+                    identity = SetupClaimsForUser(cachedUser);
                 }
             }
             else
@@ -43,16 +33,15 @@ namespace WebClient.Authentication
             return await Task.FromResult(new AuthenticationState(cachedClaimsPrincipal));
         }
 
-        public async Task ValidateLogin(string un, string pw)
+        public async Task ValidateLogin(string username, string password)
         {
             Console.WriteLine("Validating log in");
-            if (string.IsNullOrEmpty(un)) throw new Exception("Enter a username");
-            if (string.IsNullOrEmpty(pw)) throw new Exception("Enter a password");
-
+            if (string.IsNullOrEmpty(username)) throw new Exception("Enter Username");
+            if (string.IsNullOrEmpty(password)) throw new Exception("Enter Password");
             ClaimsIdentity identity = new ClaimsIdentity();
             try
             {
-                User user = await login.Validate(un, pw);
+                User user = await userService.ValidateLogin(username, password);
                 identity = SetupClaimsForUser(user);
                 string serialisedData = JsonSerializer.Serialize(user);
                 await jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", serialisedData);
@@ -60,7 +49,7 @@ namespace WebClient.Authentication
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                throw e;
             }
 
             NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(new ClaimsPrincipal(identity))));
@@ -77,10 +66,6 @@ namespace WebClient.Authentication
         private ClaimsIdentity SetupClaimsForUser(User user)
         {
             List<Claim> claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Name, user.Username));
-            claims.Add(new Claim("Level", user.SecurityLevel.ToString()));
-            claims.Add(new Claim("Password", user.Password));
-
             ClaimsIdentity identity = new ClaimsIdentity(claims, "apiauth_type");
             return identity;
         }

@@ -11,22 +11,23 @@
     <NotAuthorized>
         <div class="form-group">
             <label>Username: </label>
-            <input type="text" placeholder="user name" @bind-value="username"/>
+            <input type="text" placeholder="username..." @bind-value="username"/>
         </div>
         <div class="form-group">
             <label>Password: </label>
-            <input type="password" placeholder="password" @bind-value="password"/>
+            <input type="password" placeholder="password..." @bind-value="password"/>
         </div>
         <div style="color:red">@errorMessage</div>
 
-        <a href="" @onclick="PerformLogin">
-            Login
-        </a>
+        <div class="form-group">
+            <button href="" @onclick="PerformLoginAsync">Login</button>
+            <button href="" @onclick="CreateAccountAsync">Create Account</button>
+        </div>
     </NotAuthorized>
     <Authorized>
-        <a href="" @onclick="PerformLogout">
+        <button href="" @onclick="PerformLogoutAsync">
             Log out
-        </a>
+        </button>
     </Authorized>
 </AuthorizeView>
 
@@ -34,8 +35,9 @@
     private string username;
     private string password;
     private string errorMessage;
+    private User newUser;
 
-    private async Task PerformLogin()
+    private async Task PerformLoginAsync()
     {
         errorMessage = "";
         try
@@ -43,6 +45,7 @@
             await ((Authenticator) AuthenticationStateProvider).ValidateLogin(username, password);
             username = "";
             password = "";
+            NavigationManager.NavigateTo("/MainMenu")
         }
         catch (Exception e)
         {
@@ -51,7 +54,7 @@
         }
     }
 
-    private async Task PerformLogout()
+    private async Task PerformLogoutAsync()
     {
         errorMessage = "";
         username = "";
@@ -64,6 +67,30 @@
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
+        }
+    }
+    
+    public async Task CreateAccountAsync()
+    {
+        errorMessage = "";
+        try
+        {
+            newUser = new User
+            {
+                Username = username,
+                Password = password
+            };
+            
+            await ((UserWebService) IUserService).CreateAccount(newUser);
+            username = "";
+            password = "";
+            errorMessage = "Please Login with your new credentials";
+        }
+        catch (Exception e)
+        {
+            username = "";
+            password = "";
+            errorMessage = e.Message;
         }
     }
 

@@ -30,7 +30,8 @@ namespace WebClient
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddScoped<ILogin, LoginImp>();
+            services.AddScoped<IUserService, UserWebService>();
+            services.AddScoped<AuthenticationStateProvider, Authenticator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

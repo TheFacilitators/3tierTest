@@ -1,3 +1,35 @@
 @page "/"
 
-<h1>The student incubator</h1>
+@inject NavigationManager Nav
+
+<AuthorizeView>
+    <NotAuthorized>
+        <h1>Welcome to The Student Incubator</h1>
+        <hr/>
+        <h2>Please login to play</h2>
+    </NotAuthorized>
+    <Authorized>
+        <button @onclick="StartGame">Start game</button>
+    </Authorized>
+</AuthorizeView>
+
+@code
+{
+    [CascadingParameter]
+    protected Task<AuthenticationState> AuthStat { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        var user = (await AuthStat).User;
+        if (!user.Identity.IsAuthenticated)
+        {
+            NavigationManager.NavigateTo($"/Login");
+        }
+    }
+
+    private void StartGame()
+    {
+        Nav.NavigateTo("/MainMenu");
+    }
+}

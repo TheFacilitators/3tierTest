@@ -35,5 +35,32 @@ namespace WebClient.Data
                 }
             throw new Exception("User not found");
         }
+        
+        public async Task<User> CreateAccount(User newUser)
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            
+            HttpClient client = new HttpClient();
+
+            string userJson = JsonSerializer.Serialize(newUser, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
+            HttpContent content = new StringContent(userJson, Encoding.UTF8, "application/json");
+            
+            Console.WriteLine(content.ToString());
+            
+            HttpResponseMessage responseMessage = await client.PostAsync("http://localhost:8080/users", content);
+            //log time here? close to c#
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new Exception($"Error, {responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
+            }
+
+            return newUser;
+        }
     }
 }
